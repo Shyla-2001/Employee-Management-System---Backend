@@ -11,4 +11,7 @@ import java.util.List;
 @Service
 public interface EmployeeDao {
     public List<Employee> getAllEmployees();
+    public Employee saveEmployee(Employee employee);
+    public Employee getEmployeeById(Long id);
+    public Employee updateEmployee(Employee employee);
 }

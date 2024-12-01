@@ -16,10 +16,23 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public List<Employee> getAllEmployees() {
-        // Create a query to get all Employee records from the Employee table
         TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e", Employee.class);
-
-        // Execute the query and return the result list
         return query.getResultList();
+    }
+
+    @Override
+    public Employee saveEmployee(Employee employee) {
+        entityManager.persist(employee);
+        return employee;
+    }
+
+    @Override
+    public Employee getEmployeeById(Long id) {
+        return entityManager.find(Employee.class, id);
+    }
+
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        return entityManager.merge(employee);
     }
 }
