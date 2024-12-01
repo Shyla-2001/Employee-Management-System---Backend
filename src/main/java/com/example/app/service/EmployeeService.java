@@ -11,4 +11,7 @@ import java.util.List;
 public interface EmployeeService {
 
     public List<Employee> getAllEmployees();
+    public Employee saveEmployee(Employee employee);
+    public Employee getEmployeeById(Long employeeId);
+    public Employee updateEmployee(Long id,Employee employee);
 }
