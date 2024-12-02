@@ -41,4 +41,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         existingEmployee.setEmailId(employee.getEmailId());
         return employeeDao.updateEmployee(existingEmployee);
     }
+
+    @Override
+    public void deleteEmployee(Long employeeId) {
+        Employee existingEmployee=getEmployeeById(employeeId);
+        if (existingEmployee == null)
+            throw new ResourceNotFoundException("Employee not found with ID: " + employeeId);
+        employeeDao.deleteEmployee(existingEmployee);
+    }
 }

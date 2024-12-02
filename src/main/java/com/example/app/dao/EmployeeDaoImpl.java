@@ -35,4 +35,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee updateEmployee(Employee employee) {
         return entityManager.merge(employee);
     }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        entityManager.remove(employee);
+    }
 }

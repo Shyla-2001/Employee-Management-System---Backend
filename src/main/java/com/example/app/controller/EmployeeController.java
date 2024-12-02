@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/")
@@ -50,4 +52,12 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
+    @DeleteMapping("/deleteEmployee/{employeeId}")
+    public ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable("employeeId") Long employeeId) {
+        logger.info("Requesting deleteEmployee for ID: {}", employeeId);
+       employeeService.deleteEmployee(employeeId);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Employee deleted successfully.");
+        return ResponseEntity.ok(response);
+    }
 }
